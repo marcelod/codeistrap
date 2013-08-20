@@ -34,7 +34,7 @@ class MY_Controller extends CI_Controller {
 
         $this->load->library('template');
 
-        // $this->set_menu('site');
+        $this->set_menu('site');
     }
 
 
@@ -61,7 +61,7 @@ class MY_Controller extends CI_Controller {
     //     } 
     //     else 
     //     {
-    //         redirect('login', 'refresh');            
+    //         redirect('login', 'refresh');
     //     }
     // }
 
@@ -69,7 +69,7 @@ class MY_Controller extends CI_Controller {
     public function site()
     {
         $this->get_title();
-        // $this->get_menu();
+        $this->get_menu();
         $this->get_view();
     }
 
@@ -94,100 +94,100 @@ class MY_Controller extends CI_Controller {
     }
 
  
-    // protected function get_menu()
-    // {
-    //     $this->load->model('permissions_m');
-    //     $menus = $this->permissions_m->get_menu($this->menu);
+    protected function get_menu()
+    {
+        $this->load->model('permissions_m');
+        $menus = $this->permissions_m->get_menu($this->menu);
 
-    //     $arrMenu = array();
-    //     $rolesUser = rolesUser();
+        $arrMenu = array();
+        $rolesUser = rolesUser();
 
-    //     $viewMenu = "<ul class='nav'>";
+        $viewMenu = "<ul class='nav nav-justified'>";
 
-    //     foreach ($menus as $menu)
-    //     {
-    //         if( ($menu->role_id === NULL) || ( $this->session->userdata('logged') && in_array($menu->role_id, $rolesUser) ) )
-    //         {            
-    //             if($menu->permission_id == 0) {
-    //                 $arrMenu['raiz'][$menu->id] = $menu;
-    //             } else {
-    //                 $arrMenu[$menu->permission_id][$menu->id] = $menu;
-    //             }
-    //         }
-    //     }
+        foreach ($menus as $menu)
+        {
+            if( ($menu->role_id === NULL) || ( $this->session->userdata('logged') && in_array($menu->role_id, $rolesUser) ) )
+            {            
+                if($menu->permission_id == 0) {
+                    $arrMenu['raiz'][$menu->id] = $menu;
+                } else {
+                    $arrMenu[$menu->permission_id][$menu->id] = $menu;
+                }
+            }
+        }
         
-    //     foreach ($arrMenu['raiz'] as $id => $menu_all)
-    //     {
-    //         $subMenu = false;
+        foreach ($arrMenu['raiz'] as $id => $menu_all)
+        {
+            $subMenu = false;
 
-    //         if( isset($arrMenu[$id]) ) 
-    //         {
-    //             $subMenu = true;
-    //         }
+            if( isset($arrMenu[$id]) ) 
+            {
+                $subMenu = true;
+            }
 
-    //         $classLi = $this->router->class === $menu_all->name ? 'active' : '';
+            $classLi = $this->router->class === $menu_all->name ? 'active' : '';
             
-    //         if($subMenu === true) $classLi.= " dropdown";
+            if($subMenu === true) $classLi.= " dropdown";
 
-    //         $viewMenu.= "<li class='" . $classLi . "'>";
+            $viewMenu.= "<li class='" . $classLi . "'>";
 
-    //         if($subMenu === true) {
-    //             $viewMenu.= "<a href='#' class='dropdown-toggle' data-toggle='dropdown'>" . $menu_all->display_name;
-    //             $viewMenu.= "<b class='caret'></b>";
-    //         } else {
-    //             $viewMenu.= "<a href='" . base_url() . $menu_all->link."' title='". $menu_all->display_name."'>" . $menu_all->display_name;
-    //         }
+            if($subMenu === true) {
+                $viewMenu.= "<a href='#' class='dropdown-toggle' data-toggle='dropdown'>" . $menu_all->display_name;
+                $viewMenu.= "<b class='caret'></b>";
+            } else {
+                $viewMenu.= "<a href='" . base_url() . $menu_all->link."' title='". $menu_all->display_name."'>" . $menu_all->display_name;
+            }
 
-    //         $viewMenu.= "</a>";
+            $viewMenu.= "</a>";
             
-    //         if($subMenu === true)
-    //         {
-    //             $viewMenu.= $this->get_submenu($arrMenu, $id);
-    //         }
+            if($subMenu === true)
+            {
+                $viewMenu.= $this->get_submenu($arrMenu, $id);
+            }
             
-    //         $viewMenu.= "</li>";
-    //     }
+            $viewMenu.= "</li>";
+        }
 
-    //     $viewMenu.= "</ul>";
+        $viewMenu.= "</ul>";
      
-    //     $this->template->inject_partial('menu', $viewMenu);
-    // }
+        $this->template->inject_partial('menu', $viewMenu);
+    }
 
 
-    // private function get_submenu($ar, $menu_all)
-    // {
-    //     $viewSubMenu = "<ul class='dropdown-menu'>";
+    private function get_submenu($ar, $menu_all)
+    {
+        $viewSubMenu = "<ul class='dropdown-menu'>";
         
-    //     foreach ($ar[$menu_all] as $id => $menu_all) 
-    //     {
-    //         if($menu_all->name == 'divider')
-    //         {
-    //             $viewSubMenu.= "<li class='divider'></li>";    
-    //         } 
-    //         else if($menu_all->name == 'nav-header')
-    //         {
-    //             $viewSubMenu.= "<li class='nav-header'>" . $menu_all->display_name . "</li>";
-    //         } 
-    //         else 
-    //         {
-    //             $viewSubMenu.= "<li>";
-    //             $viewSubMenu.= "<a href='".base_url() . $menu_all->link."' title='". $menu_all->display_name."'>";
-    //             $viewSubMenu.= $menu_all->display_name;
-    //             $viewSubMenu.= "</a>";
+        foreach ($ar[$menu_all] as $id => $menu_all) 
+        {
+            if($menu_all->name == 'divider')
+            {
+                $viewSubMenu.= "<li class='divider'></li>";    
+            } 
+            else if($menu_all->name == 'nav-header')
+            {
+                $viewSubMenu.= "<li class='nav-header'>" . $menu_all->display_name . "</li>";
+            } 
+            else 
+            {
+                $viewSubMenu.= "<li>";
+                $viewSubMenu.= "<a href='".base_url() . $menu_all->link."' title='". $menu_all->display_name."'>";
+                $viewSubMenu.= $menu_all->display_name;
+                $viewSubMenu.= "</a>";
                 
-    //             if( isset($ar[$id]) ) 
-    //             {
-    //                 $viewSubMenu.= $this->monta_submenu($ar, $id);
-    //             }
+                if( isset($ar[$id]) ) 
+                {
+                    $viewSubMenu.= $this->monta_submenu($ar, $id);
+                }
                             
-    //             $viewSubMenu.= "</li>";
-    //         }            
-    //     }
+                $viewSubMenu.= "</li>";
+            }            
+        }
 
-    //     $viewSubMenu.= "</ul>";
+        $viewSubMenu.= "</ul>";
         
-    //     return $viewSubMenu;
-    // }
+        return $viewSubMenu;
+    }
 
 
     protected function set_view($view)

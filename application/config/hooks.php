@@ -10,7 +10,12 @@
 |
 */
 
-
+$hook['post_controller'] = array(
+								'class'    => 'LogAccessSite',
+                                'function' => 'logAcess',
+                                'filename' => 'logAccessSite.php',
+                                'filepath' => 'hooks'
+                            );
 
 /* End of file hooks.php */
 /* Location: ./application/config/hooks.php */

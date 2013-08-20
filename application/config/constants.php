@@ -42,5 +42,10 @@ define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 define('SITE_NAME',	 'CodeiStrap');
 
 
+
+define('ROLE_ADM',	1);
+define('ROLE_USER',	2);
+
+
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */

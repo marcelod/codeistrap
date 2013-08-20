@@ -16,6 +16,8 @@
     <!-- Custom styles for this template -->
     <link href="assets/css/default.css" rel="stylesheet">
 
+    <?php if(isset($css)) echo $css; ?>
+
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="assets/js/html5shiv.js"></script>
@@ -32,19 +34,32 @@
         <div class="row">
           <div class="col-md-8"><h3 class="text-muted">CodeiStrap</h3></div>
           <div class="col-md-4 text-right">
-            <a href='login' class='btn btn-link'>Acessar</a><a href='register' class='btn btn-link'>Registrar-se</a>            
+            <?php
+            if($this->session->userdata('logged'))
+            {
+
+              echo $this->session->userdata('user_name');
+              echo br();
+
+              $linkAdmin = roleAccessPermission('admin');
+              if($linkAdmin != FALSE)
+              {
+                echo "<a href='admin' class='btn btn-mini btn-inverse'>" . $linkAdmin . "</a>" . nbs();
+              }
+
+              echo "<a href='editar_perfil' class='btn btn-mini btn-primary'>Editar Perfil</a>" . nbs();
+              echo "<a href='logout' class='btn btn-mini btn-danger'>Sair</a>";
+            } 
+            else 
+            {
+              echo "<a href='login' class='btn btn-link'>Acessar</a><a href='register' class='btn btn-link'>Registrar-se</a>";
+            }
+            ?>            
           </div>
         </div>
+
+        <?php echo $template['partials']['menu']; ?>
         
-        <ul class="nav nav-justified">
-          <li class="active"><a href="#">Home</a></li>
-          <li><a href="#">Projects</a></li>
-          <li><a href="#">Services</a></li>
-          <li><a href="#">Downloads</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
-      
       </div>
 
       <?php echo $template['body'] ?>
