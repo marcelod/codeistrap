@@ -1,0 +1,10 @@
+{
+	"name": "marcelod/codeistrap",
+	"description": "Blog Base CodeIgniter Boostrap",
+	"keywords": ["CodeIgniter","Blog Base"],
+	"homepage": "http://github.com/marcelod/codeistrap",
+	"license": "MIT",	
+	"require": {
+		"php" : ">=5.3.0"
+	}
+}
