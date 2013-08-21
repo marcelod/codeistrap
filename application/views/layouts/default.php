@@ -74,13 +74,12 @@
     </div> <!-- /container -->
 
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="assets/js/jquery.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/jquery.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/bootstrap.min.js"></script>
 
     <?php if(isset($js)) echo $js; ?>
 
-
-    <script src="assets/js/holder.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/holder.js"></script>
     
   </body>
 </html>
