@@ -41,6 +41,10 @@ define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 
 define('SITE_NAME',	 'CodeiStrap');
 
+define('NAME_FROM',  'Contato ' . SITE_NAME);
+define('EMAIL_FROM', 'marcelo@marcelod.com.br');
+define('EMAIL_TO',   'marcelo@marcelod.com.br');
+
 
 
 define('ROLE_ADM',	1);

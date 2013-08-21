@@ -311,11 +311,21 @@ class Migration_create_base extends CI_Migration {
 			),
 			//id = 7
 			array(
+				'name' 		 	=> 'about',
+				'display_name'	=> 'Sobre',
+				'opt_menu'		=> '1',
+				'permission_id'	=> '0',
+				'ordem'			=> '2',
+				'local'			=> 'site',
+				'link' 			=> 'sobre'
+			),
+			//id = 8
+			array(
 				'name' 		 	=> 'contact',
 				'display_name'	=> 'Fale Conosco',
 				'opt_menu'		=> '1',
 				'permission_id'	=> '0',
-				'ordem'			=> '1',
+				'ordem'			=> '3',
 				'local'			=> 'site',
 				'link' 			=> 'fale_conosco'
 			)

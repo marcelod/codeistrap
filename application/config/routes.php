@@ -43,6 +43,7 @@ $route['404_override'] = '';
 
 
 
+$route['sobre'] 		= "about";
 $route['fale_conosco'] 	= "contact";
 
 /* End of file routes.php */

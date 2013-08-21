@@ -15,7 +15,7 @@
  */
 if ( ! function_exists('cAlerts'))
 {
-    function cAlerts($msg, $tipo = "success", $close = true, $icon = "&times;")
+    function cAlerts($msg, $tipo = "alert-dismissable", $close = true, $icon = "&times;")
     {
         $box = "<div class='alert " . $tipo . "'>";
 

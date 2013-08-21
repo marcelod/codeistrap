@@ -11,10 +11,10 @@
     <base href="<?php echo base_url(); ?>">
 
     <!-- Bootstrap core CSS -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="assets/css/default.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/css/default.css" rel="stylesheet">
 
     <?php if(isset($css)) echo $css; ?>
 
@@ -67,7 +67,7 @@
       <div class="footer">
         <div class="row">
             <div class="col-md-6">&copy; Company 2013</div>
-            <div class="col-md-6 text-right muted">Página processada em <strong>{elapsed_time}</strong> secundos</div>
+            <div class="col-md-6 text-right muted">Página processada em <strong>{elapsed_time}</strong> segundos</div>
         </div>
       </div>
 

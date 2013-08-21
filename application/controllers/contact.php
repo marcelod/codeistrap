@@ -12,7 +12,8 @@ class Contact extends MY_Controller {
         $this->data['msg'] = $msg;
 
         $this->load->helper('assets');
-        // $this->data['js'] = load_js(array('jquery.validate.min', 'valid/contact'));
+        $this->data['js'] = load_js(array('jquery.validate.min', 'valid/contact', 'jquery.maskedinput.min', 'maskedinput'));
+        $this->data['css'] = load_css(array('main'));
 
         $this->set_title(SITE_NAME  . " | Fale Conosco");
         $this->site();
@@ -49,7 +50,7 @@ class Contact extends MY_Controller {
             $register = $this->contact_m->save($dados);
 
             if($register == FALSE) {
-                $msg = cAlerts('Erro ao enviar mensagem! Por favor tente novamente.', 'alert-error');
+                $msg = cAlerts('Erro ao enviar mensagem! Por favor tente novamente.', 'alert-danger');
                 $this->index($msg);
             } else {
                 $dados['token'] = gera_str(rand(45, 60), 'num_str');
