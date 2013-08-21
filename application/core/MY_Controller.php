@@ -38,32 +38,32 @@ class MY_Controller extends CI_Controller {
     }
 
 
-    // public function admin()
-    // {
-    //     if( $this->session->userdata('logged')) 
-    //     {
-    //         $this->load->library('Sessao');
-    //         $router = $this->sessao->router_role_init();
+    public function admin()
+    {
+        if( $this->session->userdata('logged')) 
+        {
+            $this->load->library('Sessao');
+            $router = $this->sessao->router_role_init();
             
-    //         if($router)
-    //         {
-    //             $this->set_menu('admin');
-    //             $this->template->set_layout('logged');
+            if($router)
+            {
+                $this->set_menu('admin');
+                $this->template->set_layout('theme');
            
-    //             $this->get_title();
-    //             $this->get_menu();
-    //             $this->get_view();
-    //         } 
-    //         else 
-    //         {
-    //             redirect('scheduling', 'refresh');
-    //         }            
-    //     } 
-    //     else 
-    //     {
-    //         redirect('login', 'refresh');
-    //     }
-    // }
+                $this->get_title();
+                $this->get_menu();
+                $this->get_view();
+            } 
+            else 
+            {
+                redirect('home', 'refresh');
+            }            
+        } 
+        else 
+        {
+            redirect('login', 'refresh');
+        }
+    }
 
 
     public function site()
@@ -102,7 +102,13 @@ class MY_Controller extends CI_Controller {
         $arrMenu = array();
         $rolesUser = rolesUser();
 
-        $viewMenu = "<ul class='nav nav-justified'>";
+        if($this->menu == 'site') {
+            $nav = "nav-justified";
+        } else {
+            $nav = "navbar-nav";
+        }
+
+        $viewMenu = "<ul class='nav " . $nav . "'>";
 
         foreach ($menus as $menu)
         {
@@ -164,9 +170,9 @@ class MY_Controller extends CI_Controller {
             {
                 $viewSubMenu.= "<li class='divider'></li>";    
             } 
-            else if($menu_all->name == 'nav-header')
+            else if($menu_all->name == 'dropdown-header')
             {
-                $viewSubMenu.= "<li class='nav-header'>" . $menu_all->display_name . "</li>";
+                $viewSubMenu.= "<li class='dropdown-header'>" . $menu_all->display_name . "</li>";
             } 
             else 
             {

@@ -45,6 +45,8 @@ $route['404_override'] = '';
 
 $route['sobre'] 		= "about";
 $route['fale_conosco'] 	= "contact";
+$route['editar_perfil'] = "edit_perfil";
+
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

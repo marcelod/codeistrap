@@ -8,23 +8,30 @@
     <link rel="shortcut icon" href="assets/img/ico/favicon.png">
 
     <title><?php echo $template['title']; ?></title>
-
     <base href="<?php echo base_url(); ?>">
 
     <!-- Bootstrap core CSS -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/css/bootstrap.min.css" rel="stylesheet">
+
     <!-- Bootstrap theme -->
-    <link href="assets/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/css/bootstrap-theme.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="assets/css/theme.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/css/theme.css" rel="stylesheet">
+    
+    <link href="<?php echo base_url(); ?>assets/css/offcanvas.css" rel="stylesheet">
+
+    <link href="<?php echo base_url(); ?>assets/css/main.css" rel="stylesheet">
+
+    <?php if(isset($css)) echo $css; ?>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-      <script src="assets/js/html5shiv.js"></script>
-      <script src="assets/js/respond.min.js"></script>
+      <script src="<?php echo base_url(); ?>assets/js/html5shiv.js"></script>
+      <script src="<?php echo base_url(); ?>assets/js/respond.min.js"></script>
     <![endif]-->
   </head>
+
 
   <body>
 
@@ -40,35 +47,56 @@
           <a class="navbar-brand" href="#">CodeiStrap</a>
         </div>
         <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li class="dropdown-header">Nav header</li>
-                <li><a href="#">Separated link</a></li>
-                <li><a href="#">One more separated link</a></li>
-              </ul>
+          <?php echo $template['partials']['menu'] ?>
+
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <a href="<?php echo base_url(); ?>" alt="Site" title="Site" class="navbar-link">
+                <i class="glyphicon glyphicon-globe"></i> Site
+              </a>
+            </li>
+            <li>
+              <a href="editar_perfil" class="navbar-link">
+                <i class="glyphicon glyphicon-user"></i> 
+                <?php echo $this->session->userdata('user_name'); ?>
+              </a>
+            </li>
+            <li>
+              <a href="logout" class="navbar-link">
+                Sair
+              </a>
             </li>
           </ul>
+         
         </div><!--/.nav-collapse -->
       </div>
     </div>
 
+    <div class="container">
+
     <?php echo $template['body'] ?>
 
+    <hr>
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="assets/js/jquery.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/holder.js"></script>
+
+      <div class="footer">
+        <div class="row">
+            <div class="col-sm-6">&copy; Company 2013</div>
+            <div class="col-sm-6 text-right muted">Página processada em <strong>{elapsed_time}</strong> secundos</div>
+        </div>
+      </div>
+
+    </div>
+
+
+<!-- Placed at the end of the document so the pages load faster -->
+    <script src="<?php echo base_url(); ?>assets/js/jquery.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/bootstrap.min.js"></script>
+
+    <?php if(isset($js)) echo $js; ?>
+
+    <script src="<?php echo base_url(); ?>assets/js/holder.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/offcanvas.js"></script>
+    
   </body>
 </html>

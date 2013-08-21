@@ -42,13 +42,6 @@ class MY_Model extends CI_Model{
     */
     protected $return_type = 'object';
 
-   
-
-    // protected $tables_sem_opt_deletado = array('
-    //     tb_menu_tipo_user', 'tb_log', 'tb_user_treeview', 'tb_last_log_ficha', 'tb_ci_sessions', 'tb_estat_ficha_diario'
-    //     );
-
-
 
     /**
     * constructor method
@@ -101,42 +94,6 @@ class MY_Model extends CI_Model{
                 ->row();
     }
     
-    
-    public function get_dd($order, $where = '')
-    {
-        if (is_array($order)) {
-            foreach ($order as $f => $t){
-                $this->db->order_by($f, $t);
-            }
-        }
-        elseif (strlen($order) > 0) {
-            $this->db->order_by($order);
-        }
-        
-        if (is_array($where)) {
-            foreach ($where as $f => $w){
-                $this->db->where($f, $w);
-            }
-        }
-        elseif (strlen($where) > 0) {
-            $this->db->where($where);
-        }
-        
-        $this->db->where('opt_ativo', 1);
-        $this->db->where('opt_deletado', 0);
-        $query = $this->db->get($this->table);
-        
-        if ($this->return_type == 'array') {
-            $results = $query->result_array();
-        }
-        else {
-            $results = $query->result();
-        }
-        
-        return $results;                
-    }
-    
-    
    
     /**
     * save
@@ -186,10 +143,6 @@ class MY_Model extends CI_Model{
     public function filter($where = '', $fields = '', $order = '')
     {
         $this->db->from($this->table);
-
-        // if( ! in_array($this->table, $this->tables_sem_opt_deletado) ) { 
-        //     $this->db->where('opt_deletado', 0);
-        // }        
 
         if (is_array($where)) {
             foreach ($where as $f => $w){
@@ -245,8 +198,7 @@ class MY_Model extends CI_Model{
         else {
             $this->db
                     ->where($this->primary_key, $id)
-                    ->update($this->table, array('opt_deletado'=>'1'));
-//                    ->delete($this->table);
+                    ->delete($this->table);
 
             return TRUE;
         }
@@ -332,41 +284,6 @@ class MY_Model extends CI_Model{
     {
         return $this->db->count_all_results($this->table);
     }
-    
-    /**
-     * liberar
-     * 
-     * funcao criada para ativar ou inativar um item.
-     * primeiro eh preciso saber como o item esta (1 ou 0)
-     * a partir disso ira atualizar a tabela
-     * 
-     * @param int $cod
-     * @access public
-     * @return booelan
-     */    
-    public function liberar($cod)
-    {
-        $result = $this->get("id = $cod", "opt_ativo");
-        
-        $data['id'] = $cod;
-        $data['opt_ativo'] = $result[0]->opt_ativo == 0 ? 1 : 0;
-        
-        return $this->save($data);
-    }
-    
-    
-    
-    public function truncate()
-    {
-        $this->db->truncate($this->table);
-    }
-    
-    
-    public function set_big_select()
-    {        
-        return $this->db->query('SET SQL_BIG_SELECTS=1');
-    }
-
     
 }
 

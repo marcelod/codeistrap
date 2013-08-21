@@ -16,12 +16,14 @@
     <!-- Custom styles for this template -->
     <link href="<?php echo base_url(); ?>assets/css/default.css" rel="stylesheet">
 
+    <link href="<?php echo base_url(); ?>assets/css/main.css" rel="stylesheet">
+
     <?php if(isset($css)) echo $css; ?>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-      <script src="assets/js/html5shiv.js"></script>
-      <script src="assets/js/respond.min.js"></script>
+      <script src="<?php echo base_url(); ?>assets/js/html5shiv.js"></script>
+      <script src="<?php echo base_url(); ?>assets/js/respond.min.js"></script>
     <![endif]-->
   </head>
 
@@ -44,11 +46,11 @@
               $linkAdmin = roleAccessPermission('admin');
               if($linkAdmin != FALSE)
               {
-                echo "<a href='admin' class='btn btn-mini btn-inverse'>" . $linkAdmin . "</a>" . nbs();
+                echo "<a href='admin' class='btn btn-xs btn-warning'>" . $linkAdmin . "</a>" . nbs();
               }
 
-              echo "<a href='editar_perfil' class='btn btn-mini btn-primary'>Editar Perfil</a>" . nbs();
-              echo "<a href='logout' class='btn btn-mini btn-danger'>Sair</a>";
+              echo "<a href='editar_perfil' class='btn btn-xs btn-primary'>Editar Perfil</a>" . nbs();
+              echo "<a href='logout' class='btn btn-xs btn-danger'>Sair</a>";
             } 
             else 
             {
