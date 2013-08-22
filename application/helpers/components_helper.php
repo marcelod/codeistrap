@@ -46,10 +46,9 @@ if ( ! function_exists('pageHeader'))
 {
     function pageHeader($descryption, $header = "h1")
     {
-        // $box = "<div class='page-header'>";
         $box = "<div>";
         $box .= "<" . $header . ">" . $descryption . "</" . $header . ">";        
-        $box .= "</div>";
+        $box .= "</div><hr>";
         
         return $box;
     }
