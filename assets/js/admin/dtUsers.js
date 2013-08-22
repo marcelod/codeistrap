@@ -26,14 +26,28 @@ $(document).ready(function() {
 		}
 	       
 		// "fnDrawCallback": function ( oSettings ) {
-		// 	$(".iframe").colorbox({iframe:true, width:"80%", height:"80%"});
+		// 	$("#create").colorbox({iframe:true, width:"80%", height:"80%"});
+		// 	$("#create").colorbox({iframe:true, width:"80%", height:"80%"});
 		// }
 	});
 
+	// adapt input/select to bootstrap
+	oTable.each(function(){
+		var dt = $(this);
 
-
-	$('#users label select').addClass('form-control');
-	$('#users label input').addClass('form-control');
+		var dtWrapper = dt.closest('.dataTables_wrapper');
+		// SEARCH - Add the placeholder for Search and Turn this into in-line formcontrol
+	    var search_input = dtWrapper.find('div[id$=_filter] input');
+	    	search_input
+	    		.attr('placeholder', 'Buscar')
+	    		.addClass('form-control');
+	    // LENGTH - Inline-Form control
+	    var length_sel = dtWrapper.find('div[id$=_length] select');
+		    length_sel.addClass('form-control');
+		// LENGTH - Info adjust location
+	    var length_sel = dtWrapper.find('div[id$=_info]');
+	    	length_sel.css('margin-top', '18px');
+	});	
 
 });
 

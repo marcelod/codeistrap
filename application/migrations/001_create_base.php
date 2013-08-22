@@ -339,7 +339,7 @@ class Migration_create_base extends CI_Migration {
 		$dataPermissionsRole = array(
 			array(
 				'permission_id' => '1',
-				'role_id' 	 	=> '2'
+				'role_id' 	 	=> '1'
 			),
 			array(
 				'permission_id' => '2',
