@@ -44,6 +44,10 @@ Configurar o arquivo application/database.php
 
 ### Passo 3
 
+Criar a base de dados no servidor com o nome que definiu em seu arquivo application/database.php
+
+### Passo 4
+
 Rodar as migrations que com isso irá criar as tabelas e dados que precisa inicialmente.
 
 Supondo que você baixou e instalou em /var/www/novo_site
