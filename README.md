@@ -1,5 +1,8 @@
-CodeiStrap - Blog Base CodeIgniter Bootstrap
-============================================
+CodeiStrap 
+===========
+
+Blog Base CodeIgniter Bootstrap
+-------------------------------
 
 A ideia a ter uma base para criar um blog (ou qualquer outro site) que já tenham algumas funcionalidades como:
 
@@ -33,7 +36,7 @@ A ideia a ter uma base para criar um blog (ou qualquer outro site) que já tenha
 
 ### Passo 2
 
-	Configurar o arquivo application/database.php
+Configurar o arquivo application/database.php
 
 	$db['default']['username'] = 'root'; // colocar usuário do banco de dados
 	$db['default']['password'] = 'm@rc310'; // senha para acesso ao banco de dados
@@ -41,27 +44,27 @@ A ideia a ter uma base para criar um blog (ou qualquer outro site) que já tenha
 
 ### Passo 3
 
-	No arquivo application/config.php definir o sess_use_database como FALSE para poder rodar os migrations e depois deve voltar o valor para TRUE
+Rodar as migrations que com isso irá criar as tabelas e dados que precisa inicialmente.
 
-	$config['sess_use_database']	= TRUE;
+Supondo que você baixou e instalou em /var/www/novo_site
+
+Você irá rodar no navegador
+
+	http://localhost/novo_site/admin/instalar
+
+Com isso já deve ter criado as tabelas e dados em seu banco de dados
+
+* agora já pode remover o arquivo caso queira
 
 ### Passo 4
 
-	rodar as migrations que com isso irá criar as tabelas e dados que precisa inicialmente.
+No arquivo application/config.php definir o sess_use_database como TUE para poder gravar as sessões no banco de dados
 
-	Supondo que você baixou e instalou em /var/www/novo_site
+	$config['sess_use_database']	= TRUE;
 
-	Você irá rodar no navegador
+E agora já pode acessar o site no navegador e visualizar
 
-	http://localhost/novo_site/admin/migrate
-
-	Com isso já deve ter criado as tabelas e dados em seu banco de dados
-
-### Passo 5
-
-	Voltar para o valor TRUE o $config['sess_use_database'] em application/config.php
-
-	Acessar no navegador e usar
+http://localhost/novo_site/
 
 ## Acesso
 	
