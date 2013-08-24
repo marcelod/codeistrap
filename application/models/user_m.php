@@ -82,7 +82,7 @@ class User_m extends MY_Model {
         $this->load->library('Datatables');
 
         $this->datatables
-            ->select('name, email, nickname, confirmed, gender')
+            ->select('id, name, email, nickname, confirmed, gender')
             ->from($this->table);
 
         echo $this->datatables->generate();

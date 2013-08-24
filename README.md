@@ -38,9 +38,9 @@ A ideia a ter uma base para criar um blog (ou qualquer outro site) que já tenha
 
 Configurar o arquivo application/database.php
 
-	$db['default']['username'] = 'root'; // colocar usuário do banco de dados
-	$db['default']['password'] = 'm@rc310'; // senha para acesso ao banco de dados
-	$db['default']['database'] = 'codeistrap'; // nome da base de dados a ser usada
+	$db['default']['username'] = 'user'; // colocar usuário do banco de dados
+	$db['default']['password'] = 'password'; // senha para acesso ao banco de dados
+	$db['default']['database'] = 'database'; // nome da base de dados a ser usada
 
 ### Passo 3
 
@@ -60,7 +60,7 @@ Com isso já deve ter criado as tabelas e dados em seu banco de dados
 
 * agora já pode remover o arquivo caso queira
 
-### Passo 4
+### Passo 5
 
 No arquivo application/config.php definir o sess_use_database como TUE para poder gravar as sessões no banco de dados
 

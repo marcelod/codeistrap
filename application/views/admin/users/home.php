@@ -17,6 +17,7 @@
   <table id="users" class="table table-striped table-bordered table-hover">
     <thead>
       <tr>
+        <th>#</th>
         <th>Nome</th>
         <th>E-mail</th>
         <th>Nickname</th>
