@@ -22,7 +22,7 @@
         <th>E-mail</th>
         <th>Nickname</th>
         <th>Confimado</th>
-        <th>Sexo</th>        
+        <th>Sexo</th>
       </tr>
     </thead>
     <tbody></tbody>
