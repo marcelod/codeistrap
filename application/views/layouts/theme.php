@@ -44,7 +44,8 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">CodeiStrap</a>
+          <a class="navbar-brand" href="#">
+            <span class="glyphicon glyphicon-fire"> CodeiStrap</span></a>
         </div>
         <div class="navbar-collapse collapse">
           <?php echo $template['partials']['menu'] ?>

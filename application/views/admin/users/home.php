@@ -3,10 +3,9 @@
   <?php 
   $textHeader = "Usuários";
   $textHeader.= '<div class="pull-right">';
-  // $textHeader.= '<a class="btn btn-small btn-success" href="admin/services/create"><i class="icon-plus-sign icon-white"></i> Novo</a>';
-  // $textHeader.= '<a role="button" data-toggle="modal" data-target="#create" class="btn btn-small btn-success">
-  $textHeader.= '<a href="'. base_url() .'admin/services/create" data-target="#create" role="button"  class="btn btn-small btn-success">
-  <i class="icon-plus-sign icon-white"></i> Novo</a>';
+  // $textHeader.= '<a href="'. base_url() .'admin/users/create" data-target="#create" data-toggle="modal" role="button" class="btn btn-small btn-success">';
+  $textHeader.= '<a data-target="#create" data-toggle="modal" role="button" class="btn btn-small btn-success" id="new">';
+  $textHeader.= '<span class="glyphicon glyphicon-plus-sign"></span> Novo</a>';
   $textHeader.= '</div>';
   
   echo pageHeader($textHeader, 'h3'); 
@@ -31,3 +30,7 @@
   <?php echo form_close(); ?>
 
 </div>
+
+
+<!-- MODALS -->
+<div id="create" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModelCreate" aria-hidden="true"></div>
