@@ -64,7 +64,8 @@
             </li>
             <li>
               <a href="logout" class="navbar-link">
-                Sair
+                Sair 
+                <i class="glyphicon glyphicon-log-out"></i> 
               </a>
             </li>
           </ul>
@@ -82,7 +83,9 @@
 
       <div class="footer">
         <div class="row">
-            <div class="col-sm-6">&copy; Company 2013</div>
+            <div class="col-sm-6">
+              CodeiStrap no <a href="https://github.com/marcelod/codeistrap">Github</a>
+            </div>
             <div class="col-sm-6 text-right muted">Página processada em <strong>{elapsed_time}</strong> secundos</div>
         </div>
       </div>

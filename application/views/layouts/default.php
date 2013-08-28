@@ -68,7 +68,9 @@
       
       <div class="footer">
         <div class="row">
-            <div class="col-md-6">&copy; Company 2013</div>
+            <div class="col-md-6">
+              CodeiStrap no <a href="https://github.com/marcelod/codeistrap">Github</a>
+            </div>
             <div class="col-md-6 text-right muted">Página processada em <strong>{elapsed_time}</strong> segundos</div>
         </div>
       </div>
