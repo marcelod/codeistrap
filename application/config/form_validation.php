@@ -139,7 +139,7 @@ $config = array(
   /**
    * validation register
    */
-  'admin/users/send' => array(
+  'users/send' => array(
       array('field'=>'name',
             'label'=>'Nome',
             'rules'=>'required|min_length[3]|max_length[255]|trim|xss_clean'),

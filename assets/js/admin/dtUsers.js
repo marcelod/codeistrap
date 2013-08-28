@@ -22,14 +22,6 @@ $(document).ready(function() {
 	            'success' : fnCallback		          
         	});
 		}
-
-		// ,      
-		// "fnDrawCallback": function ( oSettings ) {
-		// 	$("#create").modal({
-		// 		show: false,
-		// 		remote: true
-		// 	});
-		// }
 	});
 
 	// adapt input/select to bootstrap

@@ -50,7 +50,7 @@
               }
 
               echo "<a href='editar_perfil' class='btn btn-xs btn-primary'>Editar Perfil</a>" . nbs();
-              echo "<a href='logout' class='btn btn-xs btn-danger'>Sair</a>";
+              echo "<a href='logout' class='btn btn-xs btn-danger'>Sair <i class='glyphicon glyphicon-log-out'></i></a>";
             } 
             else 
             {

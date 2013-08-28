@@ -34,6 +34,7 @@ class Migration_create_base extends CI_Migration {
 		$this->dbforge->add_field("`state` varchar(100) NULL ");
 		$this->dbforge->add_field("`birthdate` DATE NULL ");
 		$this->dbforge->add_field("`image` varchar(255) NULL DEFAULT 'user_default.png' ");
+		$this->dbforge->add_field("`active` tinyint(1) NOT NULL DEFAULT '1' ");
 		$this->dbforge->add_field("`created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ");
 		$this->dbforge->add_field("`updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ");
 		$this->dbforge->create_table("users", TRUE);
@@ -142,35 +143,35 @@ class Migration_create_base extends CI_Migration {
 		### Drop Table Ci_Sessions ##
 		$this->dbforge->drop_table("ci_sessions", TRUE);
 		
-		### Drop Table Users ##
-		$this->dbforge->drop_table("users", TRUE);
-
-		### Drop Table Roles ##
-		$this->dbforge->drop_table("roles", TRUE);
-				
-		### Drop Table Permissions_Role ##
-		$this->dbforge->drop_table("permissions_role", TRUE);
-		
-		### Drop Table Assigned_Roles ##
-		$this->dbforge->drop_table("assigned_roles", TRUE);
-		
-		### Drop Table Password_Reminders ##
-		$this->dbforge->drop_table("password_reminders", TRUE);
-
-		### Drop Table Posts ##
-		$this->dbforge->drop_table("posts", TRUE);
-
-		### Drop Table Comments ##
-		$this->dbforge->drop_table("comments", TRUE);
+		### Drop Table Users Mailing ##
+		$this->dbforge->drop_table("users_mailing", TRUE);
 
 		### Drop Table Contact ##
 		$this->dbforge->drop_table("contact", TRUE);
 
-		### Drop Table Users Mailing ##
-		$this->dbforge->drop_table("users_mailing", TRUE);
+		### Drop Table Comments ##
+		$this->dbforge->drop_table("comments", TRUE);
 
+		### Drop Table Posts ##
+		$this->dbforge->drop_table("posts", TRUE);
+
+		### Drop Table Password_Reminders ##
+		$this->dbforge->drop_table("password_reminders", TRUE);
+
+		### Drop Table Assigned_Roles ##
+		$this->dbforge->drop_table("assigned_roles", TRUE);
+		
+		### Drop Table Permissions_Role ##
+		$this->dbforge->drop_table("permissions_role", TRUE);
+		
 		### Drop Table Permissions ##
 		$this->dbforge->drop_table("permissions", TRUE);	
+				
+		### Drop Table Roles ##
+		$this->dbforge->drop_table("roles", TRUE);
+
+		### Drop Table Users ##
+		$this->dbforge->drop_table("users", TRUE);
 	}
 
 

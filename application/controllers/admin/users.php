@@ -42,7 +42,6 @@ class Users extends MY_Controller {
 
 	public function send()
 	{
-		
 		if($this->form_validation->run() == FALSE) {
 			echo cAlerts('Erro ao registrar! Verifique os campos obrigatórios.', 'alert-danger');
         } else {

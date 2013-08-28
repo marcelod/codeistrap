@@ -13,6 +13,14 @@ class Instalar extends CI_Controller {
         echo $ret;
     }
 
+    public function version($id = NULL)
+    {
+        if(is_null($id)) die("<p>Informe o n&uacute;mero da vers&atilde;o.</p>");
+        
+        $ret = $this->exec_func('version', $id);
+        echo $ret;
+    }
+
     private function exec_func($func, $id = NULL)
     {
         $this->load->library('migration');

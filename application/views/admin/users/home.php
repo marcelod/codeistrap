@@ -3,7 +3,6 @@
   <?php 
   $textHeader = "Usuários";
   $textHeader.= '<div class="pull-right">';
-  // $textHeader.= '<a href="'. base_url() .'admin/users/create" data-target="#create" data-toggle="modal" role="button" class="btn btn-small btn-success">';
   $textHeader.= '<a data-target="#create" data-toggle="modal" role="button" class="btn btn-small btn-success" id="new">';
   $textHeader.= '<span class="glyphicon glyphicon-plus-sign"></span> Novo</a>';
   $textHeader.= '</div>';
@@ -19,9 +18,8 @@
         <th>#</th>
         <th>Nome</th>
         <th>E-mail</th>
-        <th>Nickname</th>
-        <th>Confimado</th>
         <th>Sexo</th>
+        <th><span class="glyphicon glyphicon-cog"></span></th>
       </tr>
     </thead>
     <tbody></tbody>

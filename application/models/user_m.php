@@ -80,10 +80,13 @@ class User_m extends MY_Model {
     public function getDataTable()
     {
         $this->load->library('Datatables');
+        $this->load->helper('datatables');
 
         $this->datatables
-            ->select('id, name, email, nickname, confirmed, gender')
-            ->from($this->table);
+            ->select('id, name, email, gender, active')
+            ->from($this->table)
+            ->add_column("actions", "$1", "actionsDataTable('id', 'admin/users',1,1,1,'active')")
+            ->unset_column('active');
 
         echo $this->datatables->generate();
     }
