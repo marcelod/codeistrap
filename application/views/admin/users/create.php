@@ -1,8 +1,12 @@
 <div class="container">
 
-    <?php echo form_open('admin/users/send', array('id'=>'form-create-user')); ?>
-       
-       <div id="msg"></div>
+    <?php echo form_open('admin/users/send', array('id'=>'form-create-user', 'class'=>'form-dialog')); ?>
+        
+        <?php echo form_hidden('inf', "create"); ?>
+
+        <?php echo validation_errors();?>
+        
+        <div id="msg"></div>
         
         <div class="form-group">
             <label class="control-label" for="name">*Nome</label>

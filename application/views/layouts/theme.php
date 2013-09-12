@@ -44,7 +44,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">
+          <a class="navbar-brand" href="admin">
             <span class="glyphicon glyphicon-fire"> CodeiStrap</span></a>
         </div>
         <div class="navbar-collapse collapse">
@@ -96,6 +96,7 @@
 <!-- Placed at the end of the document so the pages load faster -->
     <script src="<?php echo base_url(); ?>assets/js/jquery.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/bootstrap.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/js/jquery.livequery.js"></script>
 
     <?php if(isset($js)) echo $js; ?>
 

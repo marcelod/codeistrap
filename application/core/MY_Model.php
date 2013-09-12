@@ -146,7 +146,11 @@ class MY_Model extends CI_Model{
 
         if (is_array($where)) {
             foreach ($where as $f => $w){
-                $this->db->where($f, $w);
+                if(substr($f, -3) === ' in'){
+                    $this->db->where_in(substr($f, 0, strlen($f)-3), $w);
+                } else {
+                    $this->db->where($f, $w);
+                }
             }
         } elseif (strlen($where) > 0) {
             $this->db->where($where);
@@ -198,6 +202,32 @@ class MY_Model extends CI_Model{
         else {
             $this->db
                     ->where($this->primary_key, $id)
+                    ->delete($this->table);
+
+            return TRUE;
+        }
+    }
+
+    /**
+    * delete_user
+    *
+    * removes a row from database
+    * usado especificamente para remover dados de uma tabela em relação a um usuario passado
+    *
+    * @param integer $id
+    * @access public
+    * @return booelan
+    */
+    public function delete_user($user_id)
+    {
+        if (! is_numeric($user_id))
+        {
+            return FALSE;
+        }
+        else
+        {
+            $this->db
+                    ->where('user_id', $user_id)
                     ->delete($this->table);
 
             return TRUE;
@@ -285,6 +315,27 @@ class MY_Model extends CI_Model{
         return $this->db->count_all_results($this->table);
     }
     
+
+    /**
+     * active
+     * 
+     * funcao criada para ativar ou inativar um item.
+     * 
+     * @param int $id
+     * @param int $active
+     * @access public
+     * @return booelan
+     */    
+    public function active($id, $active)
+    {
+        if( !$id )
+            return false;        
+        
+        return $this->save(array(
+                'id'         => $id,
+                'active'     => $active ? 0 : 1
+            ));
+    }
 }
 
 /* End of file MY_Model.php */

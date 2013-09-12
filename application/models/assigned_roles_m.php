@@ -6,6 +6,6 @@ class Assigned_roles_m extends MY_Model {
         parent::__construct();
         
         $this->table = "assigned_roles";
-    }
+    }   
 
 }

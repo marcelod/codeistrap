@@ -42,10 +42,11 @@ class MY_Controller extends CI_Controller {
     {
         if( $this->session->userdata('logged')) 
         {
+
             $this->load->library('Sessao');
-            $router = $this->sessao->router_role_init();
-            
-            if($router)
+            $access = $this->sessao->userAccessPermission(array('name' => 'admin'));
+
+            if($access !== FALSE)
             {
                 $this->set_menu('admin');
                 $this->template->set_layout('theme');
@@ -100,19 +101,14 @@ class MY_Controller extends CI_Controller {
         $menus = $this->permissions_m->get_menu($this->menu);
 
         $arrMenu = array();
-        $rolesUser = rolesUser();
-
-        if($this->menu == 'site') {
-            $nav = "nav-justified";
-        } else {
-            $nav = "navbar-nav";
-        }
-
+        $permissionsUser = permissionsUser();
+        
+        $nav = $this->menu == 'site' ? "nav-justified" : "navbar-nav";
         $viewMenu = "<ul class='nav " . $nav . "'>";
 
         foreach ($menus as $menu)
         {
-            if( ($menu->role_id === NULL) || ( $this->session->userdata('logged') && in_array($menu->role_id, $rolesUser) ) )
+            if( ($menu->role_id === NULL) || ( $this->session->userdata('logged') && in_array($menu->id, $permissionsUser) ) )
             {            
                 if($menu->permission_id == 0) {
                     $arrMenu['raiz'][$menu->id] = $menu;
@@ -183,7 +179,7 @@ class MY_Controller extends CI_Controller {
                 
                 if( isset($ar[$id]) ) 
                 {
-                    $viewSubMenu.= $this->monta_submenu($ar, $id);
+                    $viewSubMenu.= $this->get_submenu($ar, $id);
                 }
                             
                 $viewSubMenu.= "</li>";

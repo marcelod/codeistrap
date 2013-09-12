@@ -53,8 +53,8 @@ class Login extends MY_Controller {
         $this->load->model('user_m');
         $vLogin = $this->user_m->get_login($dados['login']);
         
-        // caso exista o login ou e-mail passado e já tenha confirmado por e-mail e a senha esteja correta
-        if ($vLogin && $vLogin[0]->confirmed == 1 && $dados['password'] === $this->encrypt->decode($vLogin[0]->password))
+        // caso exista o login ou e-mail passado e já tenha confirmado por e-mail e usuario esteja ativo e a senha esteja correta
+        if ($vLogin && ($vLogin[0]->confirmed == 1) && ($vLogin[0]->active == 1) && $dados['password'] === ($this->encrypt->decode($vLogin[0]->password)) )
         {
             $this->logado($vLogin);
         } else {

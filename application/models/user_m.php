@@ -2,6 +2,9 @@
 
 class User_m extends MY_Model {
 
+
+    const ROLE_USER = 2;
+
     
     public function __construct(){
         parent::__construct();
@@ -16,11 +19,14 @@ class User_m extends MY_Model {
         if($user_id != FALSE) {
             $dados_ar = array(
                 'user_id' => $user_id,
-                'role_id' => ROLE_USER
+                'role_id' => self::ROLE_USER // ROLE USER
             );
 
             $this->load->model('assigned_roles_m');
-            return $this->assigned_roles_m->save($dados_ar);    
+            $this->assigned_roles_m->save($dados_ar);
+
+            $this->load->helper('roles');
+            return setPermissionsRoleUser(self::ROLE_USER, $user_id);
         }
 
         return FALSE;               
@@ -83,12 +89,11 @@ class User_m extends MY_Model {
         $this->load->helper('datatables');
 
         $this->datatables
-            ->select('id, name, email, gender, active')
+            ->select('id, name, email, gender, confirmed, active')
             ->from($this->table)
-            ->add_column("actions", "$1", "actionsDataTable('id', 'admin/users',1,1,1,'active')")
-            ->unset_column('active');
+            ->add_column("actions", "$1", "actionsDataTable('id', 'admin/users',1,1,1,'active')");
 
-        echo $this->datatables->generate();
+        return $this->datatables->generate();
     }
 
     

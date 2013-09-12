@@ -160,5 +160,65 @@ $config = array(
             'rules'=>'required|exact_length[1]')
   ),
 
+  /**
+   * user edit
+   */
+  'users/editDB' => array(
+      array('field'=>'name',
+            'label'=>'Nome',
+            'rules'=>'required|min_length[3]|max_length[255]|trim|xss_clean'),
+      array('field'=>'username',
+            'label'=>'Login',
+            'rules'=>'required|min_length[3]|max_length[100]|trim|xss_clean'),
+      array('field'=>'password',
+            'label'=>'Senha',
+            'rules'=>'min_length[3]|max_length[100]|trim|matches[passwordconfirm]'),
+      array('field'=>'passwordconfirm', 
+            'label'=>'Confirme a Senha', 
+            'rules'=>'min_length[3]|max_langth[100]|trim'),
+      array('field'=>'gender', 
+            'label'=>'Sexo', 
+            'rules'=>'required|exact_length[1]'),
+      array('field'=>'telephone',
+            'label'=>'Telefone',
+            'rules'=>'max_length[15]|trim|xss_clean'),
+      array('field'=>'nickname',
+            'label'=>'Apelido',
+            'rules'=>'max_length[100]|trim|xss_clean'),
+      array('field'=>'birthdate',
+            'label'=>'Data de Aniversário',
+            'rules'=>'data_br_to_us|trim|xss_clean'),
+      array('field'=>'zipcode',
+            'label'=>'CEP',
+            'rules'=>'max_length[9]|trim|xss_clean'),
+      array('field'=>'address',
+            'label'=>'Endereço',
+            'rules'=>'max_length[255]|trim|xss_clean'),
+      array('field'=>'number',
+            'label'=>'Número do endereço',
+            'rules'=>'max_length[10]|trim|xss_clean'),
+      array('field'=>'complement',
+            'label'=>'Complemento',
+            'rules'=>'max_length[100]|trim|xss_clean'),
+      array('field'=>'district',
+            'label'=>'Bairro',
+            'rules'=>'max_length[100]|trim|xss_clean'),
+      array('field'=>'state',
+            'label'=>'Estado',
+            'rules'=>'max_length[100]|trim|xss_clean'),
+      array('field'=>'city',
+            'label'=>'Cidade',
+            'rules'=>'max_length[100]|trim|xss_clean')
+  ),
+
+  /**
+   * users config
+   */
+  'users/configDB' => array(
+        array('field'=>'roles_user',
+              'label'=>'Funções',
+              'rules'=>'required')
+  ),
+
 
 );

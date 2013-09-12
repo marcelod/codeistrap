@@ -11,16 +11,14 @@ class Logado extends MY_Controller {
 	protected function init()
 	{
 		$this->load->library('Sessao');
-		$router = $this->sessao->router_role_init();		
+		$access = $this->sessao->userAccessPermission(array('name' => 'admin'));
 
-		if($router)
-    	{
+		if($access !== FALSE)
+		{
             redirect('admin', 'refresh');
-    	} 
-    	else 
-    	{
-    		redirect('home', 'refresh');
-    	}
+		}
+
+    	redirect('home', 'refresh');
 	}
 	
 }

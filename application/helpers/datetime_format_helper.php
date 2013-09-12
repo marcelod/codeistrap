@@ -1,17 +1,5 @@
 <?php
 
-/**
- * recebe um valor inteiro em segundos e retorna essa quantidade em HORA:MINUTO:SEGUNDO
- */
-if ( ! function_exists('seconds_to_time'))
-{
-    function seconds_to_time($seconds)
-    {
-        return gmdate("H:i:s", $seconds);
-    }
-}
-
-
 
 /**
  * converte uma data de um formato americano para um formato brasileiro

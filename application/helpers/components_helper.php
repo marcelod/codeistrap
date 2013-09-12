@@ -53,3 +53,37 @@ if ( ! function_exists('pageHeader'))
         return $box;
     }
 }
+
+
+/**
+ * cLabel
+ *
+ * Generates an HTML to Component Label twitterBootstrap
+ * http://getbootstrap.com/components/#labels
+ *
+ * @access  public
+ * @param   string
+ * @param   string
+ * @return  string
+ */
+if ( ! function_exists('cLabel'))
+{
+    function cLabel($descryption, $class = "", $id = NULL, $element = "span" )
+    {
+        if($id != NULL)
+        {
+            $id = "id ='" . $id . "'";
+        }
+
+        if($class == "")
+        {
+            $class = "label-default";
+        }
+
+        $label = "<" . $element . " class='label " . $class . "' " . $id . ">";
+        $label.= $descryption;        
+        $label.= "</" . $element . ">";
+        
+        return $label;
+    }
+}

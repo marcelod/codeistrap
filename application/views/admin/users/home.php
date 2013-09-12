@@ -15,10 +15,12 @@
   <table id="users" class="table table-striped table-bordered table-hover">
     <thead>
       <tr>
-        <th>#</th>
+        <th class="hidden-xs">#</th>
         <th>Nome</th>
         <th>E-mail</th>
-        <th>Sexo</th>
+        <th class="hidden-xs">Sexo</th>
+        <th>CONFIRMED</th> <!-- esse coluna não irá ser exibida, estou usando os dados para manipulação -->
+        <th>ACTIVE</th> <!-- esse coluna não irá ser exibida, estou usando os dados para manipulação -->
         <th><span class="glyphicon glyphicon-cog"></span></th>
       </tr>
     </thead>
@@ -32,3 +34,6 @@
 
 <!-- MODALS -->
 <div id="create" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModelCreate" aria-hidden="true"></div>
+<div id="delete" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModelDelete" aria-hidden="true"></div>
+<div id="edit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModelEdit" aria-hidden="true"></div>
+<div id="conf" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModelConf" aria-hidden="true"></div>

@@ -72,22 +72,47 @@ if ( ! function_exists('actionColumn'))
         }
 
         $html .= '<div class="btn-group">';
-        $html .= '<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">';
+        $html .= '<button type="button" class="btn btn-sm btn-primary dropdown-toggle" data-toggle="dropdown">';
         $html .= 'Ação <span class="caret"></span>';
         $html .= '</button>';
         $html .= '<ul class="dropdown-menu" role="menu">';
+
+        if($conf) 
+        {
+            $html.= '<li>';
+            $html.= '<a data-target="#conf" data-toggle="modal" class="conf_row_dt" data-id="' . $id .'" href="#">';
+            $html.= '<span class="glyphicon glyphicon-wrench"></span> Configurar';
+            $html.= '</a>';
+            $html.= '</li>'; 
+        }  
         
-        if($delete) $html.= '<li><a href="'. $controller .'/delete/' . $id .'" class="delete_row_dt"><span class="glyphicon glyphicon-trash"> Apagar</span></a></li>';
-        if($edit)   $html.= '<li><a href="'. $controller .'/edit/' . $id .'" class="edit_row_dt"><span class="glyphicon glyphicon-pencil"> Editar</span></a></li>';
-        if($conf)   $html.= '<li><a href="'. $controller .'/conf/' . $id .'" class="conf_row_dt"><span class="glyphicon glyphicon-wrench"> Configurar</span></a></li>';
-        
+        if($edit)
+        {
+            $html.= '<li>';
+            $html.= '<a data-target="#edit" data-toggle="modal" class="edit_row_dt" data-id="' . $id .'" href="#">';
+            $html.= '<span class="glyphicon glyphicon-edit"></span> Editar';
+            $html.= '</a>';
+            $html.= '</li>';
+        }
+
         if($active !== FALSE)
         {
-            $html.= '<li><a href="'. $controller .'/active/' . $id .'/' . $active . '" class="active_row_dt">';
+            $html.= '<li>';
+            $html.= '<a href="'. $controller .'/active/' . $id .'/' . $active . '" class="active_row_dt">';
             $html.= "<span class='glyphicon glyphicon-";
-            $html.= $active ? "minus-sign'> Inativar" : "plus-sign'> Ativar";
-            $html.='</span></a></li>';
+            $html.= $active ? "minus-sign'></span> Inativar" : "plus-sign'></span> Ativar";
+            $html.= '</a>';
+            $html.= '</li>';
         } 
+
+        if($delete)
+        {
+            $html.= '<li>';
+            $html.= '<a data-target="#delete" data-toggle="modal" class="delete_row_dt" data-id="' . $id .'" href="#">';
+            $html.= '<span class="glyphicon glyphicon-trash"></span> Apagar';
+            $html.= '</a>';
+            $html.= '</li>';
+        }
 
         $html .= '</ul>';
         $html .= '</div>';

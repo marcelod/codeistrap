@@ -19,6 +19,16 @@ class Sessao
 		$this->set_user_logged();
 	}
 
+	/**
+	 * caso exista sessao criada set user_logged como true
+	 */
+	private function set_user_logged()
+	{
+		if($this->CI->session->userdata('logged'))
+		{
+			$this->user_logged = true;
+		}
+	}
 	
 	public function set_session($dadosUser)
 	{
@@ -37,62 +47,31 @@ class Sessao
 	}
 
 
-	public function router_role_init()
+	public function userAccessPermission($search)
 	{
 		if( $this->user_logged )
 		{
-			$this->CI->load->model('assigned_roles_m');
-        	$roles = $this->CI->assigned_roles_m->get(array('user_id' => $this->CI->session->userdata('user_id')));
-        	$this->set('role_id', $roles);
-        	
-        	$ar_roles = $this->get();
-        	
-        	if(in_array(ROLE_ADM, $ar_roles))
-        	{
-        	    return true;        		
-        	}
-        	
-    		return false;
-		}
-	}
+			$this->CI->load->model('permissions_m');
+			$permission = $this->CI->permissions_m->get($search, 'id');
+			
+			$getPermissionUser = array(
+				'permission_id' => $permission[0]->id, 
+				'user_id' => $this->CI->session->userdata('user_id')
+			);
+			$this->CI->load->model('permissions_user_m');
+			$access = $this->CI->permissions_user_m->get($getPermissionUser);
 
-	/**
-	 * caso exista sessao criada set user_logged como true
-	 */
-	private function set_user_logged()
-	{
-		if($this->CI->session->userdata('logged'))
-		{
-			$this->user_logged = true;
-		}
-	}
-
-	
-	protected function set($field, $result)
-	{
-		foreach ($result as $r)
-		{
-			if(is_object($r))
+			if(count($access) > 0)
 			{
-				if(isset($r->$field))
-				{
-					$this->values[] = $r->$field;
-				}
+				return TRUE;
 			}
-			elseif (is_array($r))
+			else
 			{
-				if(isset($r[$field]))
-				{
-					$this->values[] = $r[$field];
-				}
-			}
+				return FALSE;
+			}			
 		}
-	}	
-
-
-	protected function get()
-	{
-		return $this->values;
+		
+		return FALSE;
 	}
 
 }

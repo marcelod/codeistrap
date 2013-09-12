@@ -46,10 +46,5 @@ define('EMAIL_FROM', 'marcelo@marcelod.com.br');
 define('EMAIL_TO',   'marcelo@marcelod.com.br');
 
 
-
-define('ROLE_ADM',	1);
-define('ROLE_USER',	2);
-
-
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */

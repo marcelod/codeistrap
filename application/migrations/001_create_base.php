@@ -64,17 +64,26 @@ class Migration_create_base extends CI_Migration {
 		$this->dbforge->add_key("id", TRUE);
 		$this->dbforge->add_field("`permission_id` int(11) NOT NULL ");
 		$this->dbforge->add_field("`role_id` int(11) NOT NULL ");
-		$this->dbforge->add_field("CONSTRAINT FOREIGN KEY (permission_id) REFERENCES permissions(id)");
-		$this->dbforge->add_field("CONSTRAINT FOREIGN KEY (role_id) REFERENCES roles(id)");
+		$this->dbforge->add_field("CONSTRAINT FOREIGN KEY (permission_id) REFERENCES permissions(id) ON DELETE CASCADE ON UPDATE CASCADE ");
+		$this->dbforge->add_field("CONSTRAINT FOREIGN KEY (role_id) REFERENCES roles(id) ON DELETE CASCADE ON UPDATE CASCADE ");
 		$this->dbforge->create_table("permissions_role", TRUE);
+		
+		## Create Table Permissions_User
+		$this->dbforge->add_field("`id` int(11) NOT NULL auto_increment");
+		$this->dbforge->add_key("id", TRUE);
+		$this->dbforge->add_field("`permission_id` int(11) NOT NULL ");
+		$this->dbforge->add_field("`user_id` int(11) NOT NULL ");
+		$this->dbforge->add_field("CONSTRAINT FOREIGN KEY (permission_id) REFERENCES permissions(id) ON DELETE CASCADE ON UPDATE CASCADE ");
+		$this->dbforge->add_field("CONSTRAINT FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE ");
+		$this->dbforge->create_table("permissions_user", TRUE);
 		
 		## Create Table Assigned_Roles
 		$this->dbforge->add_field("`id` int(11) NOT NULL auto_increment");
 		$this->dbforge->add_key("id", TRUE);
 		$this->dbforge->add_field("`user_id` int(11) NOT NULL ");
 		$this->dbforge->add_field("`role_id` int(11) NOT NULL ");
-		$this->dbforge->add_field("CONSTRAINT FOREIGN KEY (user_id) REFERENCES users(id)");
-		$this->dbforge->add_field("CONSTRAINT FOREIGN KEY (role_id) REFERENCES roles(id)");
+		$this->dbforge->add_field("CONSTRAINT FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE ");
+		$this->dbforge->add_field("CONSTRAINT FOREIGN KEY (role_id) REFERENCES roles(id) ON DELETE CASCADE ON UPDATE CASCADE ");
 		$this->dbforge->create_table("assigned_roles", TRUE);
 		
 		## Create Table Password_Reminders
@@ -96,7 +105,7 @@ class Migration_create_base extends CI_Migration {
 		$this->dbforge->add_field("`meta_keywords` varchar(255) NULL ");
 		$this->dbforge->add_field("`created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ");
 		$this->dbforge->add_field("`updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ");
-		$this->dbforge->add_field("CONSTRAINT FOREIGN KEY (user_id) REFERENCES users(id)");
+		$this->dbforge->add_field("CONSTRAINT FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE ");
 		$this->dbforge->create_table("posts", TRUE);
 
 		## Create Table Comments
@@ -107,8 +116,8 @@ class Migration_create_base extends CI_Migration {
 		$this->dbforge->add_field("`content` text NOT NULL ");
 		$this->dbforge->add_field("`created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ");
 		$this->dbforge->add_field("`updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ");
-		$this->dbforge->add_field("CONSTRAINT FOREIGN KEY (user_id) REFERENCES users(id)");
-		$this->dbforge->add_field("CONSTRAINT FOREIGN KEY (post_id) REFERENCES posts(id)");
+		$this->dbforge->add_field("CONSTRAINT FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE ON UPDATE CASCADE ");
+		$this->dbforge->add_field("CONSTRAINT FOREIGN KEY (post_id) REFERENCES posts(id) ON DELETE CASCADE ON UPDATE CASCADE ");
 		$this->dbforge->create_table("comments", TRUE);
 
 		## Create Table Contact
@@ -163,6 +172,9 @@ class Migration_create_base extends CI_Migration {
 		
 		### Drop Table Permissions_Role ##
 		$this->dbforge->drop_table("permissions_role", TRUE);
+		
+		### Drop Table Permissions_User ##
+		$this->dbforge->drop_table("permissions_user", TRUE);
 		
 		### Drop Table Permissions ##
 		$this->dbforge->drop_table("permissions", TRUE);	
@@ -258,7 +270,7 @@ class Migration_create_base extends CI_Migration {
 				'permission_id'	=> '0',
 				'ordem'			=> '0',
 				'local'			=> 'site',
-				'link'			=> NULL
+				'link'			=> 'admin'
 			),
 			//id = 2
 			array(
@@ -344,23 +356,50 @@ class Migration_create_base extends CI_Migration {
 			),
 			array(
 				'permission_id' => '2',
-				'role_id' 	 	=> '2'
+				'role_id' 	 	=> '1'
 			),
 			array(
 				'permission_id' => '3',
-				'role_id' 	 	=> '2'
+				'role_id' 	 	=> '1'
 			),
 			array(
 				'permission_id' => '4',
-				'role_id' 	 	=> '2'
+				'role_id' 	 	=> '1'
 			),
 			array(
 				'permission_id' => '5',
-				'role_id' 	 	=> '2'
+				'role_id' 	 	=> '1'
 			)
 		);
 
 		$this->db->insert_batch('permissions_role', $dataPermissionsRole);
+
+
+		// INSERT DATA PERMISSIONS USER
+		$dataPermissionsUser = array(
+			array(
+				'permission_id' => '1',
+				'user_id' 	 	=> '2'
+			),
+			array(
+				'permission_id' => '2',
+				'user_id' 	 	=> '2'
+			),
+			array(
+				'permission_id' => '3',
+				'user_id' 	 	=> '2'
+			),
+			array(
+				'permission_id' => '4',
+				'user_id' 	 	=> '2'
+			),
+			array(
+				'permission_id' => '5',
+				'user_id' 	 	=> '2'
+			)
+		);
+
+		$this->db->insert_batch('permissions_user', $dataPermissionsUser);
 	}
 
 }

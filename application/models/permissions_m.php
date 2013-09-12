@@ -26,4 +26,22 @@ class Permissions_m extends MY_Model {
         }
     }
 
+
+    public function get_permissions_config_user($user_id)
+    {
+        $menu = $this->db->query('
+                SELECT p.id, p.name, p.display_name, p.opt_menu, p.permission_id, p.local, p.link, 
+                (select 1 from permissions_user where user_id = ' . $user_id . ' and permission_id = p.id) as checked
+                FROM permissions p
+                where p.id in( select permission_id from permissions_user ) 
+                ORDER BY p.opt_menu desc, p.local , p.ordem, p.display_name
+        ');
+        
+        if ($menu->num_rows() > 0) {
+            return $menu->result();
+        } else {
+            return array();
+        }   
+    }
+
 }

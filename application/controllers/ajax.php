@@ -49,6 +49,32 @@ class Ajax extends CI_Controller {
         return $resultado;
     }
 
+
+
+    public function getPermissionsRole()
+    {
+        if($this->input->post('roleId'))
+        {
+            $arPermissions = array();
+            
+            $data['role_id']    = $this->input->post('roleId');
+            
+            $this->load->model('permissions_role_m');
+            $permissions = $this->permissions_role_m->get($data, 'permission_id');
+
+            foreach ($permissions as $permission) {
+                $arPermissions[] = $permission->permission_id;
+            }
+
+            echo json_encode(array(
+                'success' => true,
+                'permissions' => $arPermissions
+            ));
+        }
+
+        return FALSE;
+    }
+
     
 
 }

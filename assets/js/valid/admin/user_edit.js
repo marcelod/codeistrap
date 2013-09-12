@@ -1,7 +1,6 @@
 $( function() {
-    //VALIDACAO DO FORM DE CADASTRO DE USUARIO NA ÁREA ADMIN
-
-    $("#form-create-user").livequery(function () {
+    //VALIDACAO DO FORM DE EDIÇÃO DE USUARIO NA ÁREA ADMIN
+    $("#form-edit-user").livequery(function () {
         $(this).validate({
             rules: {
                 name: {required:true,minlength:3,maxlength:255},

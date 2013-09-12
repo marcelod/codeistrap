@@ -43,10 +43,10 @@
               echo $this->session->userdata('user_name');
               echo br();
 
-              $linkAdmin = roleAccessPermission('admin');
-              if($linkAdmin != FALSE)
+              $linkAdmin = userPermission(array('name' => 'admin'));
+              if($linkAdmin !== FALSE)
               {
-                echo "<a href='admin' class='btn btn-xs btn-warning'>" . $linkAdmin . "</a>" . nbs();
+                echo "<a href='" . $linkAdmin->link . "' class='btn btn-xs btn-warning'>" . $linkAdmin->display_name . "</a>" . nbs();
               }
 
               echo "<a href='editar_perfil' class='btn btn-xs btn-primary'>Editar Perfil</a>" . nbs();
@@ -80,7 +80,8 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="<?php echo base_url(); ?>assets/js/jquery.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/bootstrap.min.js"></script>
-
+    <script src="<?php echo base_url(); ?>assets/js/jquery.livequery.js"></script>
+    
     <?php if(isset($js)) echo $js; ?>
 
     <script src="<?php echo base_url(); ?>assets/js/holder.js"></script>

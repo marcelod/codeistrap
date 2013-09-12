@@ -1,9 +1,10 @@
 $(document).ready(function() {
 
   // criação da mascara para o campo com id telephone
-  $("#telephone").mask("(99) 9999-9999?9");
+  $("#telephone").livequery(function () {
+    $(this).mask("(99) 9999-9999?9");
 
-  $("#telephone").on("blur", function() {
+    $(this).on("blur", function() {
       var last = $(this).val().substr( $(this).val().indexOf("-") + 1 );
 
       if( last.length == 5 )
@@ -14,12 +15,18 @@ $(document).ready(function() {
           
           $(this).val( first + move + '-' + lastfour );
       }
+    });
+  });
+ 
+  // criação da mascara para o campo com id birthdate
+  $("#birthdate").livequery(function () {
+    $(this).mask("99/99/9999");
   });
 
-  // criação da mascara para o campo com id birthdate
-  $("#birthdate").mask("99/99/9999");
-
   // criação da mascara para o campo com id zipcode
-  $("#zipcode").mask("99999-999");
+  $("#zipcode").livequery(function () {
+    $(this).mask("99999-999");
+  });
+
 
 });

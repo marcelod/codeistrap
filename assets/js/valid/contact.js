@@ -31,7 +31,8 @@ $( function() {
             $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
         },
         success: function(element) {
-            element.addClass('valid').closest('.form-group').removeClass('has-error').addClass('has-success');
+            $(element).closest('.form-group').removeClass('has-error').addClass('has-success');
+            $(element).remove();
         }
     });
 });
